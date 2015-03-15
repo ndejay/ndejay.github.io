@@ -13,4 +13,4 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 
-exclude: ['Gemfile', 'Gemfile.lock', 'Procfile', 'config.ru']
+exclude: ['Gemfile', 'Gemfile.lock', 'Procfile', 'config.ru', 'Rakefile', 'vendor']

@@ -1,1 +1,4 @@
-run lambda { |env| [200, {'Content-Type'=>'text/plain'}, StringIO.new("Hello World! WHOO ooo\n")] }
+require 'rack/jekyll'
+require 'yaml'
+
+run Rack::Jekyll.new
