@@ -54,8 +54,7 @@ GEM
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
     rack (1.6.0)
-    rack-jekyll (0.3.5)
-      jekyll
+    rack-protection (1.5.3)
       rack
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
@@ -63,6 +62,11 @@ GEM
     redcarpet (3.2.2)
     safe_yaml (1.0.4)
     sass (3.4.13)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    tilt (1.4.1)
     timers (4.0.1)
       hitimes
     toml (0.1.2)
@@ -77,4 +81,4 @@ DEPENDENCIES
   jekyll
   puma
   rack
-  rack-jekyll
+  sinatra
