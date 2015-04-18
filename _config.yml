@@ -11,5 +11,9 @@ url: "http://url.herokuapp.com" # the base hostname & protocol for your site
 # Build settings
 # markdown: kramdown
 
+sass:
+  sass_dir: _sass
+  style: compressed
+
 include: ['feed.xml']
-exclude: ['Gemfile', 'Gemfile.lock', 'Procfile', 'sinatra.rb', 'Rakefile', 'vendor']
+exclude: ['Gemfile', 'Gemfile.lock', 'Procfile', 'sinatra.rb', 'Rakefile', 'vendor', 'tmp']
