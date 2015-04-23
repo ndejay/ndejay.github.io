@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+- 2.2.0
+script:
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  app:
+    master: nicolasdejay
+  api_key:
+    secure: B2VPVxf4VVGKdUky2VFynQVrST7/OCwDvOEz6DHnaIwmwVtwB7TSXz+9/Yd8zg5PkzwfHp9LuEwWIdxWDlEAEWGGDbOlHXOtY8GaY7ilBWqwj4siEySAIxx5Kbg8AeaKyd8vyaaF25e0P94m2Obc9b4YY1rHV12kXBuOTKKsURs=
+notifications:
+  email: false

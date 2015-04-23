@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gem 'bundler'
+gem 'rake'
 gem 'jekyll'
 gem 'puma'
 gem 'rack'
 gem 'sinatra'
+ruby '2.2.0'
