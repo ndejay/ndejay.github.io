@@ -24,4 +24,4 @@ scope:
 
 # Misc 
 include: ['feed.xml']
-exclude: ['Gemfile', 'Gemfile.lock', 'Procfile', 'sinatra.rb', 'Rakefile', 'vendor', 'tmp']
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'vendor', 'tmp']
