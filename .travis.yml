@@ -1,7 +1,12 @@
 language: ruby
 rvm:
   - 2.2.0
+install:
+  - bundle install
+branches:
+  only:
+    - source
 script:
-  - bundle exec rake site:build
+  - bundle exec rake site:deploy --quiet
 notifications:
   email: false

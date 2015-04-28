@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-gem 'bundler'
+
 gem 'rake'
-gem 'jekyll'
-ruby '2.2.0'
+gem 'github-pages'
