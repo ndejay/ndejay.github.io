@@ -12,12 +12,12 @@ layout: default
         <span>{{ post.date | date: "%b %-d, %Y" }}</span>
 
         <h2>
-          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
         </h2>
       </li>
     {% endfor %}
   </ul>
 
-  <p>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p>subscribe <a href="{{ "/feed.xml" | prepend: site.url }}">via RSS</a></p>
 
 </div>

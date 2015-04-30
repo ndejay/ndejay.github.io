@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ site.baseurl }}">{{ site.title }}</a>
+      <a class="navbar-brand" href="{{ site.url }}">{{ site.title }}</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,11 +17,11 @@
       <ul class="nav navbar-nav navbar-middle">
         {% for page in site.pages %}
           {% if page.title %}
-            <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+            <li><a href="{{ page.url | prepend: site.url }}">{{ page.title }}</a></li>
           {% endif %}
         {% endfor %}
-        <li><a href="#">GITHUB</a></li>
-        <li><a href="#">TWITTER</a></li>
+        <li><a href="http://github.com">GITHUB</a></li>
+        <li><a href="http://twitter.com">TWITTER</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

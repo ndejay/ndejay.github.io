@@ -8,6 +8,7 @@
 require 'rake'
 require 'date'
 require 'yaml'
+require 'html/proofer'
 
 CONFIG = YAML.load(File.read('_config.yml'))
 USERNAME = CONFIG['username'] || ENV['GIT_NAME']
@@ -66,7 +67,7 @@ def push_destination
   sha = `git log`.match(/[a-z0-9]{40}/)[0]
   Dir.chdir CONFIG["destination"] do
     sh 'git add --all .'
-    sh "git commit -m 'Update to #{USERNAME}/#{REPO}@#{sha}.'"
+    sh "git commit -m 'Update to #{USERNAME}/#{REPO}@#{sha}'"
     sh "git push --quiet origin #{DESTINATION_BRANCH}"
     puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
   end
@@ -81,23 +82,26 @@ end
 namespace :site do
   desc 'Generate the site'
   task :build do
-    pull_destination
     sh 'bundle exec jekyll build'
   end
 
   desc 'Generate the site and serve locally'
   task :serve do
-    pull_destination
     sh 'bundle exec jekyll serve'
   end
 
   desc 'Generate the site, serve locally and watch for changes'
   task :watch do
-    pull_destination
     sh 'bundle exec jekyll serve --watch'
   end
 
-  desc 'Generate the site and push changes to remote origin'
+  desc 'Generate the site and validate HTML'
+  task :validate do
+    sh 'bundle exec jekyll build'
+    HTML::Proofer.new(CONFIG['destination'], {disable_external: true}).run
+  end
+
+  desc 'Generate the site, validate HTML and push to destination branch'
   task :deploy do
     # Detect pull request
     if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
@@ -119,6 +123,9 @@ namespace :site do
 
     # Generate the site
     sh 'bundle exec jekyll build'
+
+    # Validate HTML
+    HTML::Proofer.new(CONFIG['destination'], {disable_external: true}).run
 
     # Push destination folder
     push_destination
