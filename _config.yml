@@ -20,12 +20,6 @@ sass:
 
 # Strip .html extension
 permalink: pretty
-defaults: ''
-scope:
-  path: ''
-  type: 'posts'
-  values:
-    permalink: /:year/:month/:day/:title/
 
 # Misc 
 include:
