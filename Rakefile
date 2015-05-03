@@ -29,6 +29,19 @@ end
 #
 #############################################################################
 
+# Print error and exit
+def die (string)
+  puts string
+  exit
+end
+
+# Configure git
+def configure_git
+  sh "git config --global user.name '#{ENV['GIT_NAME']}'"
+  sh "git config --global user.email '#{ENV['GIT_EMAIL']}'"
+  sh 'git config --global push.default simple'
+end
+
 # If destination folder exists, sync it with the remote.  Otherwise, clone it
 # from the remote.  Then, clear its contents.
 def pull_destination
@@ -61,6 +74,17 @@ def pull_destination
   end
 end
 
+# Generate the site
+def build_destination
+  sh "git checkout #{SOURCE_BRANCH}"
+  sh 'bundle exec jekyll build'
+end
+
+# HTML proof the site
+def validate_destination
+  HTML::Proofer.new(CONFIG['destination'], {disable_external: true}).run
+end
+
 # Commit the contents of the destination folder into the destination branch and
 # push the commit to the remote.
 def push_destination
@@ -82,7 +106,7 @@ end
 namespace :site do
   desc 'Generate the site'
   task :build do
-    sh 'bundle exec jekyll build'
+    build_destination
   end
 
   desc 'Generate the site and serve locally'
@@ -97,37 +121,16 @@ namespace :site do
 
   desc 'Generate the site and validate HTML'
   task :validate do
-    sh 'bundle exec jekyll build'
-    HTML::Proofer.new(CONFIG['destination'], {disable_external: true}).run
+    validate_destination
   end
 
   desc 'Generate the site, validate HTML and push to destination branch'
   task :deploy do
-    # Detect pull request
-    if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
-      puts 'Pull request detected. Not proceeding with deploy.'
-      exit
-    end
-
-    # Configure git if this is run in Travis CI
-    if ENV['TRAVIS']
-      sh "git config --global user.name '#{ENV['GIT_NAME']}'"
-      sh "git config --global user.email '#{ENV['GIT_EMAIL']}'"
-      sh 'git config --global push.default simple'
-    end
-
-    sh "git checkout #{SOURCE_BRANCH}"
-
-    # Pull and prepare destination folder
+    die 'Pull request detected. Not proceeding with deploy.' if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
+    configure_git if ENV['TRAVIS']
     pull_destination
-
-    # Generate the site
-    sh 'bundle exec jekyll build'
-
-    # Validate HTML
-    HTML::Proofer.new(CONFIG['destination'], {disable_external: true}).run
-
-    # Push destination folder
+    build_destination
+    validate_destination
     push_destination
   end
 end
