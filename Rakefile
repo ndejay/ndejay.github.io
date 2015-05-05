@@ -78,6 +78,11 @@ end
 def build_destination
   sh "git checkout #{SOURCE_BRANCH}"
   sh 'bundle exec jekyll build'
+
+  # Write CNAME based on URL key in _config.yml
+  File.open("#{CONFIG['destination']}/CNAME", 'w') do |f|
+    f.write CONFIG['url'][/http:\/\/(.*\.com)/, 1]
+  end
 end
 
 # HTML proof the site
