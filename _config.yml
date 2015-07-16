@@ -4,12 +4,12 @@ highlighter:      pygments
 
 # Permalinks
 permalink:        pretty
-relative_permalinks: true
+# relative_permalinks: true
 
 # Setup
 title:            Nicolas De Jay
 tagline:          ''
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+description:      ''
 url:              http://nicolasdejay.com
 baseurl:          /
 
@@ -18,12 +18,6 @@ author:
   url:            https://twitter.com/mdo
 
 paginate:         5
-
-# Custom vars
-version:          0.1.0
-
-github:
-  repo:           https://github.com/poole/hyde
 
 # Deploy settings
 safe:             false
