@@ -1,33 +1,35 @@
-# Site settings
-title: Your awesome title sandaru
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://nicolasdejay.com"
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            Nicolas De Jay
+tagline:          ''
+description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+url:              http://nicolasdejay.com
+baseurl:          /
+
+author:
+  name:           'Nicolas De Jay'
+  url:            https://twitter.com/mdo
+
+paginate:         5
+
+# Custom vars
+version:          0.1.0
+
+github:
+  repo:           https://github.com/poole/hyde
 
 # Deploy settings
-safe: false
-username: 'ndejay'
-destination: '_site'
+safe:             false
+username:         'ndejay'
+destination:      '_site'
 
-# SASS settings
-sass:
-  sass_dir: _sass
-  style: compressed
-
-# Strip .html extension
-permalink: pretty
-
-# Misc 
-include:
-  - feed.xml
-  - CNAME
-exclude:
-  - Rakefile
-  - Gemfile
-  - Gemfile.lock
-  - vendor
-  - .travis.yml
+# Misc
+include:          [ 'feed.xml', 'CNAME' ]
+exclude:          [ 'Rakefile', 'Gemfile', 'Gemfile.lock', 'vendor', '.travis.yml' ]
