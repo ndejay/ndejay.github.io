@@ -9,9 +9,16 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    bibtex-ruby (4.0.14)
+      latex-decode (~> 0.0)
     blankslate (2.1.2.4)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    citeproc (1.0.2)
+      namae (~> 0.8)
+    citeproc-ruby (1.1.0)
+      citeproc (>= 1.0.2, < 2.0)
+      csl (~> 1.4)
     classifier-reborn (2.0.3)
       fast-stemmer (~> 1.0)
     coffee-script (2.4.1)
@@ -20,6 +27,10 @@ GEM
     coffee-script-source (1.9.1.1)
     colorator (0.1)
     colored (1.2)
+    csl (1.4.3)
+      namae (~> 0.7)
+    csl-styles (1.0.1.6)
+      csl (~> 1.0)
     ethon (0.7.3)
       ffi (>= 1.3.0)
     execjs (2.5.2)
@@ -86,6 +97,11 @@ GEM
       jekyll (~> 2.0)
     jekyll-sass-converter (1.2.0)
       sass (~> 3.2)
+    jekyll-scholar (4.5.0)
+      bibtex-ruby (~> 4.0, >= 4.0.13)
+      citeproc-ruby (~> 1.0)
+      csl-styles (~> 1.0)
+      jekyll (~> 2.0)
     jekyll-sitemap (0.8.1)
     jekyll-watch (1.2.1)
       listen (~> 2.7)
@@ -95,6 +111,8 @@ GEM
       jekyll (~> 2.0)
     json (1.8.2)
     kramdown (1.5.0)
+    latex-decode (0.2.2)
+      unicode (~> 0.4)
     liquid (2.6.1)
     listen (2.10.0)
       celluloid (~> 0.16.0)
@@ -104,6 +122,7 @@ GEM
     mercenary (0.3.5)
     mini_portile (0.6.2)
     minitest (5.6.1)
+    namae (0.10.1)
     net-dns (0.8.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -133,6 +152,7 @@ GEM
       ethon (>= 0.7.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unicode (0.4.4.2)
     yajl-ruby (1.2.1)
     yell (2.0.5)
 
@@ -142,4 +162,8 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   html-proofer
+  jekyll-scholar
   rake
+
+BUNDLED WITH
+   1.10.5

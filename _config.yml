@@ -1,10 +1,12 @@
+# Plugins
+gems:             [ 'jekyll/scholar' ]
+
 # Dependencies
 markdown:         redcarpet
 highlighter:      pygments
 
 # Permalinks
 permalink:        pretty
-# relative_permalinks: true
 
 # Setup
 title:            Nicolas De Jay
@@ -15,7 +17,6 @@ baseurl:          /
 
 author:
   name:           'Nicolas De Jay'
-  url:            https://twitter.com/mdo
 
 paginate:         5
 
@@ -23,6 +24,17 @@ paginate:         5
 safe:             false
 username:         'ndejay'
 destination:      '_site'
+
+# jekyll-scholar settings
+
+scholar:
+  style:          apa
+  locale:         en
+# sort-by:        asd
+  order:          ascending
+  source:         ./_bibliography
+# bibliography:   papers.bib
+  bibliography_template: bib
 
 # Misc
 include:          [ 'feed.xml', 'CNAME' ]
