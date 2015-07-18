@@ -12,11 +12,8 @@ permalink:        pretty
 title:            Nicolas De Jay
 tagline:          ''
 description:      ''
-url:              http://nicolasdejay.com
+url:              'http://nicolasdejay.com'
 baseurl:          /
-
-author:
-  name:           'Nicolas De Jay'
 
 paginate:         5
 
