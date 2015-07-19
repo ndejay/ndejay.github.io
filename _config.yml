@@ -1,38 +1,40 @@
-# Plugins
-gems:             [ 'jekyll/scholar' ]
-
-# Dependencies
-markdown:         redcarpet
-highlighter:      pygments
-
-# Permalinks
-permalink:        pretty
+# Plugins and dependencies
+gems:             [ 'jekyll/scholar',
+                    'jekyll/tagging' ]
+markdown:     redcarpet
+highlighter:  pygments
 
 # Setup
-title:            Nicolas De Jay
-tagline:          ''
-description:      ''
-url:              'http://nicolasdejay.com'
-baseurl:          /
-
-paginate:         5
+title:       Nicolas De Jay
+tagline:     ''
+description: ''
+url:         'http://nicolasdejay.com'
+baseurl:     /
+paginate:    5
+permalink:   pretty
 
 # Deploy settings
-safe:             false
-username:         'ndejay'
-destination:      '_site'
+safe:        false
+username:    'ndejay'
+destination: '_site'
 
 # jekyll-scholar settings
 
 scholar:
-  style:          apa
-  locale:         en
-# sort-by:        asd
-  order:          ascending
-  source:         ./_bibliography
-# bibliography:   papers.bib
+  style:                 apa
+  locale:                en
+# sort-by:               asd
+  order:                 ascending
+  source:                ./_bibliography
+# bibliography:          papers.bib
   bibliography_template: bib
 
+# jekyll-tagging settings
+
+tag_page_layout:     tag_page
+tag_page_dir:        tag
+tag_permalink_style: pretty
+
 # Misc
-include:          [ 'feed.xml', 'CNAME' ]
-exclude:          [ 'Rakefile', 'Gemfile', 'Gemfile.lock', 'vendor', '.travis.yml' ]
+include: [ 'feed.xml', 'CNAME' ]
+exclude: [ 'Rakefile', 'Gemfile', 'Gemfile.lock', 'vendor', '.travis.yml' ]
