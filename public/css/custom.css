@@ -1,0 +1,17 @@
+/*
+ * .post-title,
+.post-date {
+  text-align: right;
+}
+*/
+
+ol.bibliography {
+  padding: 0;
+  margin: 0;
+}
+
+ol.bibliography > li {
+  list-style-type: none;
+  text-align: justify;
+  padding-bottom: 1em;
+}
