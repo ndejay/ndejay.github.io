@@ -4,12 +4,12 @@ module Jekyll
 
 
     def generate(site)
-      if site.layouts.key? 'archive_index'
+      if site.layouts.key? site.config['archive_layout']
         site.pages << ArchiveIndex.new(site,
                                        site.source,
                                        './',
-                                       'archive.html',
-                                       { 'layout' => 'archive_index' })
+                                       site.config['archive_target'],
+                                       { 'layout' => site.config['archive_layout'] })
       end
     end
 
