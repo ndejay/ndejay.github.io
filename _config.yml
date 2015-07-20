@@ -1,6 +1,6 @@
 # Plugins and dependencies
-gems:             [ 'jekyll/scholar',
-                    'jekyll/tagging' ]
+gems:         [ 'jekyll/scholar',
+                'jekyll-archives' ]
 markdown:     redcarpet
 highlighter:  pygments
 
@@ -29,11 +29,20 @@ scholar:
 # bibliography:          papers.bib
   bibliography_template: bib
 
-# jekyll-tagging settings
+# jekyll-archives settings
 
-tag_page_layout:     tag_page
-tag_page_dir:        tag
-tag_permalink_style: pretty
+jekyll-archives:
+  enabled:    [ 'year', 'month', 'tags' ]
+  layouts:
+    year:     archive-year
+    month:    archive-month
+    tag:      archive-tag
+  permalinks:
+    year:     '/:year/'
+    month:    '/:year/:month/'
+    day:      '/:year/:month/:day/'
+    tag:      '/tag/:name/'
+    category: '/category/:name/'
 
 # Misc
 include: [ 'feed.xml', 'CNAME' ]
