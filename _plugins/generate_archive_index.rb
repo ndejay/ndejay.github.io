@@ -2,7 +2,6 @@ module Jekyll
 
   class ArchiveIndexGenerator < Generator
 
-    safe true
 
     def generate(site)
       if site.layouts.key? 'archive_index'
@@ -27,13 +26,15 @@ module Jekyll
 
       process(@name)
 
+      @data['title'] = 'Archive'
       @data['archive_tags'] = generate_archive_tags
       @data['archive_date'] = generate_archive_for_years
     end
 
     def generate_archive_tags
-      tags = site.posts.map { |p| p.tags }.inject(&:+).uniq
-      tags.map do |tag|
+      tags = site.posts.map { |p| p.tags }.inject(&:+)
+      return [] unless tags
+      tags.uniq.map do |tag|
         {
           'url'        => "/tag/#{tag}",
           'name'       => tag,
@@ -43,8 +44,9 @@ module Jekyll
     end
 
     def generate_archive_for_years
-      years = site.posts.map { |p| p.url_placeholders[:year] }.uniq.sort
-      years.map do |year|
+      years = site.posts.map { |p| p.url_placeholders[:year] }
+      return [] unless years
+      years.uniq.sort.map do |year|
         {
           'url'        => "/#{year}",
           'name'       => year,
@@ -56,8 +58,9 @@ module Jekyll
 
     def generate_archive_for_months_in_year(year)
       posts_in_year = site.posts.select { |p| p.url_placeholders[:year] == year }
-      months = posts_in_year.map { |p| p.url_placeholders[:month] }.uniq.sort
-      months = months.map do |month|
+      months = posts_in_year.map { |p| p.url_placeholders[:month] }
+      return [] unless months
+      months.uniq.sort.map do |month|
         {
           'url'        => "/#{year}/#{month}",
           'name'       => Time.new(0, month).strftime("%B"),
