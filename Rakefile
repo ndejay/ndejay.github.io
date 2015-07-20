@@ -68,6 +68,9 @@ def pull_destination
       sh "git checkout --orphan #{DESTINATION_BRANCH}"
     end
 
+    sh 'touch .keep'
+    sh 'git add .keep'
+
     # Wipe the slate clean to ensure clean builds.
     sh 'git rm -fr .'
     sh 'rm -fr *'
