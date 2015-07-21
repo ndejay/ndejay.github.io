@@ -45,6 +45,13 @@ publication_index:
   layout:      publication_index
   target:      publications
 
+# _plugins/project_index.rb
+
+project_index:
+  source:      _projects.yaml
+  layout:      project_index
+  target:      projects
+
 # Misc
 include: [ 'feed.xml', 'CNAME' ]
 exclude: [ 'Rakefile', 'Gemfile', 'Gemfile.lock', 'vendor', '.travis.yml' ]

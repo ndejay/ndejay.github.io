@@ -1,0 +1,16 @@
+---
+layout:  page
+title:   Projects
+---
+
+<ol class="naked-list">
+  {% for project in page.projects %}
+  <li>
+    <h3>
+      <a href="{{ project.url }}">{{ project.name }}</a>
+    </h3>
+    <span><small>Authors: {{ project.authors | join: ", " }}</small></span>
+    <span>{{ project.description | markdownify }}</span>
+  </li>
+  {% endfor %}
+</ol>
