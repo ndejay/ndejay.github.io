@@ -38,18 +38,27 @@ module Jekyll
 
     def years
       hash = Hash.new { |h, key| h[key] = [] }
-      @cp.items.values.each do |e|
-        hash[e.issued.year.to_s] << @cp.render(:bibliography, id: e.id)
+      @cp.items.values.each { |e| hash[e.issued.year.to_s] << e }
+
+      hash.values.each do |ps|
+        ps.sort! { |a, b| a.issued.mon.to_i <=> b.issued.mon.to_i  }.reverse!
       end
-      hash.values.each { |ps| ps.sort!.reverse! }
+
       hash
+    end
+
+    def publication(id)
+      content = @cp.render(:bibliography, id: id).first
+      content.
+        gsub(/[{}]/, '').
+        gsub(/(De Jay, N\.)/, '<strong>\1</strong>')
     end
 
     def publications_by_year
       years.map do |year, pubs|
         {
           'name'              => year,
-          'publications'      => pubs,
+          'publications'      => pubs.map { |p| publication(p.id) },
           'publication_count' => pubs.length,
         }
       end
