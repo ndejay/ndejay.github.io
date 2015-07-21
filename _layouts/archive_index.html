@@ -19,10 +19,19 @@ title:  Archives
   <ol class="naked-list">
     {% for year in page.archives_by_date %}
     <li>
-      <h3><a href="{{ year.url }}">{{ year.name }}</a> <small>({{ year.post_count }})</small></h3>
+      <h3>
+        <a href="{{ year.url }}">{{ year.name }}</a>
+        <small>({{ year.post_count }})</small>
+      </h3>
       <ol>
         {% for month in year.months %}
-        <li><a href="{{ month.url }}">{{ month.name }}</a> ({{ month.post_count }})</li>
+        <li>
+          {% if month.url %}
+          <a href="{{ month.url }}">{{ month.name }}</a> ({{ month.post_count }})
+          {% else %}
+          <span>{{ month.name }}</a>
+          {% endif %}
+        </li>
         {% endfor %}
       </ol>
     </li>

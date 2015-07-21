@@ -33,6 +33,7 @@ module Jekyll
     def generate_archives_by_tag
       tags = site.posts.map { |p| p.tags }.inject(&:+)
       return [] unless tags
+
       tags.uniq.map do |tag|
         {
           'url'        => "/tag/#{tag}",
@@ -45,6 +46,7 @@ module Jekyll
     def generate_archives_by_year
       years = site.posts.map { |p| p.url_placeholders[:year] }
       return [] unless years
+
       years.uniq.sort.map do |year|
         {
           'url'        => "/#{year}",
@@ -57,13 +59,14 @@ module Jekyll
 
     def generate_archives_by_months_in_year(year)
       posts_in_year = site.posts.select { |p| p.url_placeholders[:year] == year }
-      months = posts_in_year.map { |p| p.url_placeholders[:month] }
-      return [] unless months
-      months.uniq.sort.map do |month|
+      months        = (1..12).map { |m| "%02d" % m }
+
+      months.map do |month|
+        post_count = posts_in_year.select { |p| p.url_placeholders[:month] == month }.length
         {
-          'url'        => "/#{year}/#{month}",
+          'url'        => post_count > 0 ? "/#{year}/#{month}" : nil,
           'name'       => Time.new(0, month).strftime("%B"),
-          'post_count' => posts_in_year.select { |p| p.url_placeholders[:month] == month }.length,
+          'post_count' => post_count,
         }
       end
     end
