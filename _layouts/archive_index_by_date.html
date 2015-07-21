@@ -1,0 +1,15 @@
+---
+layout:        default
+title:         Archives
+archive_index: true
+---
+
+<h1>
+  {% if page.type == 'year' %}
+  Archive of posts from {{ page.date | date: "%Y" }}
+  {% else if page.type == 'month' %}
+  Archive of posts from {{ page.date | date: "%B %Y" }}
+  {% endif %}
+</h1>
+
+{% include archive_listing.html %}

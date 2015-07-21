@@ -34,15 +34,13 @@ scholar:
 jekyll-archives:
   enabled:    [ 'year', 'month', 'tags' ]
   layouts:
-    year:     archive_index_by_year
-    month:    archive_index_by_month
+    year:     archive_index_by_date
+    month:    archive_index_by_date
     tag:      archive_index_by_tag
   permalinks:
     year:     '/:year/'
     month:    '/:year/:month/'
-    day:      '/:year/:month/:day/'
     tag:      '/tag/:name/'
-    category: '/category/:name/'
 
 # _plugins/generate_archive_index.rb
 

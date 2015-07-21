@@ -16,7 +16,7 @@
       {% for node in pages_list %}
         {% if node.title != null %}
           {% if node.layout == "page" or node.layout == "archive_index" %}
-            <a class="sidebar-nav-item{% if page.url == node.url or page.title == node.title %} active{% endif %}" href="{{ node.url }}">
+            <a class="sidebar-nav-item{% if page.url == node.url or (page.archive_index and node.archive_index) %} active{% endif %}" href="{{ node.url }}">
               {{ node.title }}
             </a>
           {% endif %}
