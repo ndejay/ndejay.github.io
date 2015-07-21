@@ -42,11 +42,13 @@ jekyll-archives:
     month:    '/:year/:month/'
     tag:      '/tag/:name/'
 
-# _plugins/generate_archive_index.rb
+# _plugins/archive_index.rb
 
 archive_index:
-  layout: archive_index
-  target: archives
+  layout:      archive_index
+  target:      archives
+  fill:
+    months:    false
 
 # Misc
 include: [ 'feed.xml', 'CNAME' ]

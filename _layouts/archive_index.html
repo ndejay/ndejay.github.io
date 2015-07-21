@@ -28,10 +28,24 @@ archive_index: true
         {% for month in year.months %}
         <li>
           {% if month.url %}
-          <a href="{{ month.url }}">{{ month.name }}</a> ({{ month.post_count }})
+            <a href="{{ month.url }}">{{ month.name }}</a>
+            <span>({{ month.post_count }})</span>
           {% else %}
           <span>{{ month.name }}</a>
           {% endif %}
+
+          <!--
+          <ol>
+            {% for day in month.days %}
+            <li>
+              <a href="{{ day.url }}">{{ day.name }}</a>
+              <small>({{ day.post_count }})</small>
+            </li>
+            {% endfor %}
+          </ol>
+          -->
+
+
         </li>
         {% endfor %}
       </ol>

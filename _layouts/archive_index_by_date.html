@@ -7,8 +7,10 @@ archive_index: true
 <h1>
   {% if page.type == 'year' %}
   Archive of posts from {{ page.date | date: "%Y" }}
-  {% else if page.type == 'month' %}
+  {% elsif page.type == 'month' %}
   Archive of posts from {{ page.date | date: "%B %Y" }}
+  {% elsif page.type == 'day' %}
+  Archive of posts from {{ page.date | date: "%b %d, %Y" }}
   {% endif %}
 </h1>
 
