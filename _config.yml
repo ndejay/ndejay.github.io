@@ -1,6 +1,5 @@
 # Plugins and dependencies
-gems:         [ 'jekyll/scholar',
-                'jekyll-archives' ]
+gems:         [ 'jekyll-archives' ]
 markdown:     redcarpet
 highlighter:  pygments
 
@@ -17,17 +16,6 @@ permalink:   pretty
 safe:        false
 username:    'ndejay'
 destination: '_site'
-
-# jekyll-scholar settings
-
-scholar:
-  style:                 apa
-  locale:                en
-# sort-by:               asd
-  order:                 ascending
-  source:                ./_bibliography
-# bibliography:          papers.bib
-  bibliography_template: bib
 
 # jekyll-archives settings
 
@@ -49,6 +37,13 @@ archive_index:
   target:      archives
   fill:
     months:    false
+
+# _plugins/publication_index.rb
+
+publication_index:
+  source:      _publications.bib
+  layout:      publication_index
+  target:      publications
 
 # Misc
 include: [ 'feed.xml', 'CNAME' ]
