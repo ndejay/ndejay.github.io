@@ -36,7 +36,7 @@ jekyll-archives:
   layouts:
     year:     archive_index_by_date
     month:    archive_index_by_date
-    tag:      archive_index_by_tag
+    tag:      archive_index_by_category_or_tag
   permalinks:
     year:     '/:year/'
     month:    '/:year/:month/'

@@ -27,8 +27,9 @@ module Jekyll
       process(@name)
       read_yaml(File.join(base, '_layouts'), "#{@config['layout']}.html")
 
-      @data['archives_by_tag']  = archives_by_tag
-      @data['archives_by_date'] = archives_by_year
+      @data['archives_by_category'] = archives_by_category
+      @data['archives_by_tag']      = archives_by_tag
+      @data['archives_by_date']     = archives_by_year
     end
 
     # Construct a Hash of Posts indexed by the specified Post attribute.
@@ -63,6 +64,10 @@ module Jekyll
       hash
     end
 
+    def categories
+      post_attr_hash('categories')
+    end
+
     def tags
       post_attr_hash('tags')
     end
@@ -87,6 +92,16 @@ module Jekyll
     def days(year, month)
       # Create entries only for days with posts.
       post_date_attr_hash("%d", months(year)[month])
+    end
+
+    def archives_by_category
+      categories.map do |category, ps|
+        {
+          'url'        => "/category/#{category}",
+          'name'       => category,
+          'post_count' => ps.length,
+        }
+      end
     end
 
     def archives_by_tag

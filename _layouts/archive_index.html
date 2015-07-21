@@ -4,6 +4,19 @@ title:         Archives
 archive_index: true
 ---
 
+<!--
+<div id="archives-by-category">
+  <h2>By Category</h2>
+  <ol class="naked-list">
+    {% for category in page.archives_by_category %}
+    <li>
+      <a href="{{ category.url }}">{{ category.name }}</a> ({{ category.post_count }})
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+-->
+
 <div id="archives-by-tag">
   <h2>By Tag</h2>
   <ol class="naked-list">
