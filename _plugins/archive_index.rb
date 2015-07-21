@@ -78,8 +78,9 @@ module Jekyll
     end
 
     def months(year)
-      # Create entries only for days with months.
-      post_date_attr_hash("%m", years[year])
+      methods = [:months_filled, :months_unfilled]
+      months  = method(@config['fill']['months'] ? methods.first : methods.last)
+      months.call(year)
     end
 
     def months_filled(year)
@@ -87,6 +88,11 @@ module Jekyll
       hash = Hash.new { |h, key| h[key] = [] }
       (1..12).map { |m| hash["%02d" % m] }
       hash.merge(months(year))
+    end
+
+    def months_unfilled(year)
+      # Create entries only for days with months.
+      post_date_attr_hash("%m", years[year])
     end
 
     def days(year, month)
@@ -126,13 +132,7 @@ module Jekyll
     end
 
     def archives_by_months_in_year(year)
-      months = if @config['fill']['months']
-                 method(:months_filled)
-               else
-                 method(:months)
-               end
-
-      months.call(year).map do |month, ps|
+      months(year).map do |month, ps|
         filled_only = {
           'url'        => "/#{year}/#{month}",
           'days'       => archives_by_days_in_month(year, month),
