@@ -1,7 +1,14 @@
+<ol class="naked-list">
 {% for post in page.posts %}
+  <li>
     <h3>
       <a href="{{ post.url }}">{{ post.title }}</a>
       <span><small>{{ post.date | date_to_string }}</small></span>
       <span><small>{{ post | tags }}</small></span>
     </h3>
+    <span class="post-except">
+      {{ post.excerpt | markdownify }}
+    </span>
+  </li>
 {% endfor %}
+</ol>

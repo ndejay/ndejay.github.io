@@ -11,7 +11,11 @@ ol.bibliography {
 }
 
 ol.bibliography > li {
-  list-style-type: none;
-  text-align: justify;
   padding-bottom: 1em;
+}
+
+ol.naked-list {
+  list-style-type: none;
+  padding: 0; 
+  margin: 0; 
 }
