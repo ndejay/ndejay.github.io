@@ -46,8 +46,9 @@ jekyll-archives:
 
 # _plugins/generate_archive_index.rb
 
-archive_layout: archive_index
-archive_target: archive.html
+archive_index:
+  layout: archive_index
+  target: archives
 
 # Misc
 include: [ 'feed.xml', 'CNAME' ]

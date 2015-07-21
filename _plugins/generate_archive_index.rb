@@ -2,36 +2,35 @@ module Jekyll
 
   class ArchiveIndexGenerator < Generator
 
+    priority :high
 
     def generate(site)
-      if site.layouts.key? site.config['archive_layout']
-        site.pages << ArchiveIndex.new(site,
-                                       site.source,
-                                       './',
-                                       site.config['archive_target'],
-                                       { 'layout' => site.config['archive_layout'] })
-      end
+      config = site.config['archive_index'] || {}
+
+      archive_index = ArchiveIndex.new(site, site.source, './', config['target'])
+
+      site.pages << archive_index
     end
 
   end
 
   class ArchiveIndex < Page
 
-    def initialize(site, base, dir, name, data)
-      @site = site
-      @base = base
-      @dir  = dir
-      @name = name
-      @data = data
+    def initialize(site, base, dir, name)
+      @site   = site
+      @base   = base
+      @dir    = dir
+      @config = site.config['archive_index'] || {}
+      @name   = "#{name.to_s.gsub(/[:\s]+/, '_')}.html"
 
       process(@name)
+      read_yaml(File.join(base, '_layouts'), "#{@config['layout']}.html")
 
-      @data['title'] = 'Archive'
-      @data['archive_tags'] = generate_archive_tags
-      @data['archive_date'] = generate_archive_for_years
+      @data['archives_by_tag']  = generate_archives_by_tag
+      @data['archives_by_date'] = generate_archives_by_year
     end
 
-    def generate_archive_tags
+    def generate_archives_by_tag
       tags = site.posts.map { |p| p.tags }.inject(&:+)
       return [] unless tags
       tags.uniq.map do |tag|
@@ -43,20 +42,20 @@ module Jekyll
       end
     end
 
-    def generate_archive_for_years
+    def generate_archives_by_year
       years = site.posts.map { |p| p.url_placeholders[:year] }
       return [] unless years
       years.uniq.sort.map do |year|
         {
           'url'        => "/#{year}",
           'name'       => year,
-          'months'     => generate_archive_for_months_in_year(year),
+          'months'     => generate_archives_by_months_in_year(year),
           'post_count' => site.posts.select { |p| p.url_placeholders[:year] == year }.length,
         }
       end
     end
 
-    def generate_archive_for_months_in_year(year)
+    def generate_archives_by_months_in_year(year)
       posts_in_year = site.posts.select { |p| p.url_placeholders[:year] == year }
       months = posts_in_year.map { |p| p.url_placeholders[:month] }
       return [] unless months
@@ -68,8 +67,6 @@ module Jekyll
         }
       end
     end
-
-    def read_yaml(*) ; end
 
   end
 

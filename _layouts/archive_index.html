@@ -1,23 +1,30 @@
 ---
 layout: page
-title:  Archive
+title:  Archives
 ---
 
-<div class="archive-tags">
-<h2>By Tag</h2>
-  {% for tag in page.archive_tags %}
-  <a href="{{ tag.url }}">#{{ tag.name }}</a> ({{ tag.post_count }})
-  {% endfor %}
+<div id="archives-by-tag">
+  <h2>By Tag</h2>
+  <ol class="naked-list">
+    {% for tag in page.archives_by_tag %}
+    <li>
+      <a href="{{ tag.url }}">#{{ tag.name }}</a> ({{ tag.post_count }})
+    </li>
+    {% endfor %}
+  </ol>
 </div>
 
-<div class="archive-date">
-<h2>By Date</h2>
-{% for year in page.archive_date %}
-<h3><a href="{{ year.url }}">{{ year.name }}</a> <small>({{ year.post_count }})</small></h3>
-    <ol>
-      {% for month in year.months %}
-      <li><a href="{{ month.url }}">{{ month.name }}</a> ({{ month.post_count }})</li>
-      {% endfor %}
-    </ol>
-{% endfor %}
+<div id="archives-by-date">
+  <h2>By Date</h2>
+  <ol class="naked-list">
+    {% for year in page.archives_by_date %}
+    <li>
+      <h3><a href="{{ year.url }}">{{ year.name }}</a> <small>({{ year.post_count }})</small></h3>
+      <ol>
+        {% for month in year.months %}
+        <li><a href="{{ month.url }}">{{ month.name }}</a> ({{ month.post_count }})</li>
+        {% endfor %}
+      </ol>
+    </li>
+    {% endfor %}
 </div>
