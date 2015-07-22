@@ -90,7 +90,11 @@ end
 
 # HTML proof the site
 def validate_destination
-  HTML::Proofer.new(CONFIG['destination'], {disable_external: true}).run
+  opts = {
+    disable_external: true,
+    href_ignore: [/.*/],
+  }
+  HTML::Proofer.new(CONFIG['destination'], opts).run
 end
 
 # Commit the contents of the destination folder into the destination branch and
