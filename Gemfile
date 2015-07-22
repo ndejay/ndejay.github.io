@@ -9,6 +9,8 @@ gem 'bibtex-ruby'
 gem 'citeproc-ruby'
 gem 'csl-styles'
 
+gem 'jekyll-sass'
+
 group :jekyll_plugins do
   gem 'jekyll-archives'
 end

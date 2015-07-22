@@ -3,19 +3,21 @@ layout:  page
 title:   Publications
 ---
 
-<ol class="naked-list">
-  {% for year in page.publications_by_year %}
-  <li>
-    <h3>
-      {{ year.name }}</a>
-      <small>({{ year.publication_count }})</small>
-    </h3>
-    <ol>
-      {% for publication in year.publications %}
-      <li>
-        <span>{{ publication }}</span>
-      </li>
-      {% endfor %}
-    </ol>
-  </li>
-  {% endfor %}
+<div class="publication-index">
+  <ol>
+    {% for year in page.publications_by_year %}
+    <li>
+      <h3>
+        {{ year.name }}
+        <small>({{ year.publication_count }})</small>
+      </h3>
+      <ol>
+        {% for publication in year.publications %}
+        <li>
+          {{ publication }}
+        </li>
+        {% endfor %}
+      </ol>
+    </li>
+    {% endfor %}
+</div>

@@ -5,9 +5,9 @@ archive_index: true
 ---
 
 <!--
-<div id="archives-by-category">
+<div class="archives-by-category">
   <h2>By Category</h2>
-  <ol class="naked-list">
+  <ol>
     {% for category in page.archives_by_category %}
     <li>
       <a href="{{ category.url }}">{{ category.name }}</a> ({{ category.post_count }})
@@ -17,9 +17,9 @@ archive_index: true
 </div>
 -->
 
-<div id="archives-by-tag">
+<div class="archives-by-tag">
   <h2>By Tag</h2>
-  <ol class="naked-list">
+  <ol>
     {% for tag in page.archives_by_tag %}
     <li>
       <a href="{{ tag.url }}">#{{ tag.name }}</a> ({{ tag.post_count }})
@@ -28,9 +28,9 @@ archive_index: true
   </ol>
 </div>
 
-<div id="archives-by-date">
+<div class="archives-by-date">
   <h2>By Date</h2>
-  <ol class="naked-list">
+  <ol>
     {% for year in page.archives_by_date %}
     <li>
       <h3>

@@ -1,5 +1,5 @@
 # Plugins and dependencies
-gems:         [ 'jekyll-archives' ]
+gems:         [ 'jekyll-archives', 'jekyll-sass' ]
 markdown:     redcarpet
 highlighter:  pygments
 
@@ -51,6 +51,12 @@ project_index:
   source:      _projects.yaml
   layout:      project_index
   target:      projects
+
+# jekyll-sass settings
+sass:
+  style:            compressed
+  deploy_style:     compressed
+  compile_in_place: false
 
 # Misc
 include: [ 'feed.xml', 'CNAME' ]
