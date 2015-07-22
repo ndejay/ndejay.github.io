@@ -2,9 +2,7 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <h1>
-        <a href="{{ site.baseurl }}">
-          {{ site.title }}
-        </a>
+        <a href="{{ site.baseurl }}">{{ site.title }}</a>
       </h1>
       <p class="lead">{{ site.description }}</p>
     </div>
@@ -25,5 +23,12 @@
     </nav>
 
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+
+    <div class="sidebar-links">
+      <a href="{{ site.author.github }}"><i class='fa fa-github fa-4x'></i></a>
+      <a href="{{ site.author.twitter }}"><i class='fa fa-twitter fa-4x'></i></a>
+      <a href="{{ site.author.linkedin }}"><i class='fa fa-linkedin fa-4x'></i></a>
+    </div>
+
   </div>
 </div>

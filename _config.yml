@@ -12,6 +12,11 @@ baseurl:     /
 paginate:    5
 permalink:   pretty
 
+# Sidebar
+author:
+  github:    https://github.com/ndejay
+  twitter:   https://twitter.com/ndejay
+
 # Deploy settings
 safe:        false
 username:    'ndejay'
