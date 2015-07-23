@@ -27,6 +27,12 @@ module Jekyll
       process(@name)
       read_yaml(File.join(base, '_layouts'), "#{@config['layout']}.html")
 
+      @month_method = if @config['fill']['months']
+                        :months_filled
+                      else
+                        :months_unfilled
+                      end
+
       @data['archives_by_category'] = archives_by_category
       @data['archives_by_tag']      = archives_by_tag
       @data['archives_by_date']     = archives_by_year
@@ -78,16 +84,14 @@ module Jekyll
     end
 
     def months(year)
-      methods = [:months_filled, :months_unfilled]
-      months  = method(@config['fill']['months'] ? methods.first : methods.last)
-      months.call(year)
+      method(@month_method).call(year)
     end
 
     def months_filled(year)
       # Create entries even for postless months.
       hash = Hash.new { |h, key| h[key] = [] }
       (1..12).map { |m| hash["%02d" % m] }
-      hash.merge(months(year))
+      hash.merge(months_unfilled(year))
     end
 
     def months_unfilled(year)
