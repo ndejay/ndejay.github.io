@@ -3,36 +3,28 @@
   padding: 0
   margin: 0
 
-.sidebar-links
-  a
-    text-decoration: none
+.sidebar
+  &-links
+    a:hover
+      text-decoration: none
+    i
+      display: inline
+      text-align: center
+      padding: 0.1em
 
-  a:hover
-    color: #f4bf75
-
-  i
-    display: inline
-    text-align: center
-    padding: 0.1em
-
-.related-post-index > ol
-  @extend .no-list
-
+.related-post-index > ol,
 .archived-post-index > ol
   @extend .no-list
 
-.archives-by-category > ol
-  @extend .no-list
+.archives-by
+  &-category > ol,
+  &-tags > ol,
+  &-date > ol
+    @extend .no-list
 
-.archives-by-tags > ol
-  @extend .no-list
-
-.archives-by-date > ol
-  @extend .no-list
-
-.publication-index ol
-  @extend .no-list
-
-.publication-index > ol ol li
-  @extend .no-list
-  padding-bottom: 1em
+.publication-index
+  ol
+    @extend .no-list
+  & > ol ol li
+    @extend .no-list
+    padding-bottom: 1em
