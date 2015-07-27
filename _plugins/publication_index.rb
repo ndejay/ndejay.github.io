@@ -51,7 +51,8 @@ module Jekyll
       content = @cp.render(:bibliography, id: id).first
       content.
         gsub(/[{}]/, '').
-        gsub(/(De Jay, N\.)/, '<strong>\1</strong>')
+        gsub(/(De Jay, N\.)/, '<strong>\1</strong>').
+        gsub(/\.\./, '.')
     end
 
     def publications_by_year
