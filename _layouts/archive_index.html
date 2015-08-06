@@ -4,7 +4,7 @@ title:         Archives
 archive_index: true
 ---
 
-<!--
+{% if site.jekyll-archives.enabled contains 'categories' %}
 <div class="archives-by-category">
   <h2>By Category</h2>
   <ol>
@@ -15,8 +15,9 @@ archive_index: true
     {% endfor %}
   </ol>
 </div>
--->
+{% endif %}
 
+{% if site.jekyll-archives.enabled contains 'tags' %}
 <div class="archives-by-tag">
   <h2>By Tag</h2>
   <ol>
@@ -27,7 +28,9 @@ archive_index: true
     {% endfor %}
   </ol>
 </div>
+{% endif %}
 
+{% if site.jekyll-archives.enabled contains 'year' %}
 <div class="archives-by-date">
   <h2>By Date</h2>
   <ol>
@@ -37,6 +40,7 @@ archive_index: true
         <a href="{{ year.url }}">{{ year.name }}</a>
         <small>({{ year.post_count }})</small>
       </h3>
+      {% if site.jekyll-archives.enabled contains 'month' %}
       <ol>
         {% for month in year.months %}
         <li>
@@ -46,8 +50,7 @@ archive_index: true
           {% else %}
           <span>{{ month.name }}</a>
           {% endif %}
-
-          <!--
+          {% if site.jekyll-archives.enabled contains 'day' %}
           <ol>
             {% for day in month.days %}
             <li>
@@ -56,12 +59,12 @@ archive_index: true
             </li>
             {% endfor %}
           </ol>
-          -->
-
-
+          {% endif %}
         </li>
         {% endfor %}
       </ol>
+      {% endif %}
     </li>
     {% endfor %}
 </div>
+{% endif %}
