@@ -10,7 +10,10 @@ archive_index: true
   <ol>
     {% for category in page.archives_by_category %}
     <li>
-      <a href="{{ category.url }}">{{ category.name }}</a> ({{ category.post_count }})
+      <a href="{{ category.url }}">{{ category.name }}</a>
+      {% if site.archive_index.counts.category %}
+      ({{ category.post_count }})
+      {% endif %}
     </li>
     {% endfor %}
   </ol>
@@ -23,7 +26,10 @@ archive_index: true
   <ol>
     {% for tag in page.archives_by_tag %}
     <li>
-      <a href="{{ tag.url }}">#{{ tag.name }}</a> ({{ tag.post_count }})
+      <a href="{{ tag.url }}">#{{ tag.name }}</a>
+      {% if site.archive_index.counts.tag %}
+      ({{ tag.post_count }})
+      {% endif %}
     </li>
     {% endfor %}
   </ol>
@@ -38,7 +44,9 @@ archive_index: true
     <li>
       <h3>
         <a href="{{ year.url }}">{{ year.name }}</a>
+        {% if site.archive_index.counts.year %}
         <small>({{ year.post_count }})</small>
+        {% endif %}
       </h3>
       {% if site.jekyll-archives.enabled contains 'month' %}
       <ol>
@@ -46,7 +54,9 @@ archive_index: true
         <li>
           {% if month.url %}
             <a href="{{ month.url }}">{{ month.name }}</a>
+            {% if site.archive_index.counts.month %}
             <span>({{ month.post_count }})</span>
+            {% endif %}
           {% else %}
           <span>{{ month.name }}</a>
           {% endif %}
@@ -55,7 +65,9 @@ archive_index: true
             {% for day in month.days %}
             <li>
               <a href="{{ day.url }}">{{ day.name }}</a>
+              {% if site.archive_index.counts.day %}
               <small>({{ day.post_count }})</small>
+              {% endif %}
             </li>
             {% endfor %}
           </ol>
