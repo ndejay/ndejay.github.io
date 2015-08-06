@@ -9,7 +9,9 @@ title:   Publications
     <li>
       <h3>
         {{ year.name }}
-        <!-- <small>({{ year.publication_count }})</small> -->
+        {% if site.publication_index.counts %}
+        <small>({{ year.publication_count }})</small>
+        {% endif %}
       </h3>
       <ol>
         {% for publication in year.publications %}

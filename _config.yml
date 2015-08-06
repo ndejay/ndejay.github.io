@@ -49,6 +49,7 @@ publication_index:
   source:      _publications.bib
   layout:      publication_index
   target:      publications
+  counts:      false
 
 # _plugins/project_index.rb
 
