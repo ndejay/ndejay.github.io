@@ -5,7 +5,7 @@ projects:
         - Jean-Philippe Fortin
         - Nicolas De Jay
     description: 'R package for calling CNV from Illumina 450k methylation microarrays.'
-    url:         https://github.com/ndejay/CopyNumber450k
+    url:         https://github.com/spapillon/CopyNumber450k
   - name:        'mRMRe'
     authors:
         - Nicolas De Jay
