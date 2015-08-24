@@ -26,19 +26,19 @@ destination: '_site'
 # jekyll-archives settings
 
 jekyll-archives:
-  enabled:    [ 'year', 'month', 'tags' ] # categories, days
+  enabled:    [ 'year', 'tags' ] # categories, days, months
   layouts:
   # category
     tag:      archive_index_by_category_or_tag
   # day
     year:     archive_index_by_date
-    month:    archive_index_by_date
+  # month:    archive_index_by_date
   permalinks:
   # category
     tag:      '/tag/:name/'
   # day
     year:     '/:year/'
-    month:    '/:year/:month/'
+  # month:    '/:year/:month/'
 
 # _plugins/archive_index.rb
 
