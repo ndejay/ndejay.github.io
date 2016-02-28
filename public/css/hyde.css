@@ -32,7 +32,7 @@
  */
 
 html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -45,6 +45,10 @@ html {
   }
 }
 
+code,
+pre {
+  font-family: Menlo, Monaco, "Droid Sans Mono", monospace;
+}
 
 /*
  * Sidebar
@@ -58,6 +62,10 @@ html {
   padding: 2rem 1rem;
   color: rgba(255,255,255,.5);
   background-color: #202020;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+
+  font-family: 'Bitter', serif;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -91,9 +99,10 @@ html {
   display: block;
   line-height: 1.75;
 }
-a.sidebar-nav-item:hover,
-a.sidebar-nav-item:focus {
+.sidebar a:hover,
+.sidebar a:focus {
   text-decoration: underline;
+  color: #c1d9e1;
 }
 .sidebar-nav-item.active {
   font-weight: bold;
